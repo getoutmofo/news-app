@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 async function fetchNews(category) {
   try {
-    const url = `https://newsapi.org/v2/top-headlines?country=us&category=${category.toLowerCase()}&apiKey=cd45e3a1a5bc42058c57e60cd5dd5fd6`;
+    const url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=29191e36f02143fb83692db2752c26ca`;
     const response = await fetch(url);
     
     if (!response.ok) {
