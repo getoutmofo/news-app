@@ -2,8 +2,14 @@ import React, { useState, useEffect } from 'react';
 
 async function fetchNews(category) {
   try {
-    const url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=29191e36f02143fb83692db2752c26ca`;
-    const response = await fetch(url);
+    const url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}`;
+     const response = await fetch(url, {
+    headers: {
+      'X-Api-Key': '29191e36f02143fb83692db2752c26ca', // ✅ Use header instead of URL param
+      'Accept': 'application/json'
+    }
+  });
+  
     
     if (!response.ok) {
       throw new Error(`API request failed with status ${response.status}`);
@@ -13,6 +19,7 @@ async function fetchNews(category) {
     
     // Validate API response structure
     if (!data || !Array.isArray(data.articles)) {
+
       throw new Error('Invalid API response format');
     }
     
